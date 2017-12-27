@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h2>Форма обратной связи</h2>
+    
+    {{ form_start(form, {'method': 'post', 'action': path('feedback')}) }}
+        <div>Ваше имя:</div>
+        {{ form_widget(form.name) }}<br>
+        <div>Номер для обратной связи:</div>
+        {{ form_widget(form.phone) }}<br>
+        <div>Сообщение:</div>
+        {{ form_widget(form.message) }}<br><br>
+        {{ form_widget(form.submit) }}
+    {{ form_end(form) }}
+{% endblock %}

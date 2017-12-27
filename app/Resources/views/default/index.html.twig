@@ -1,0 +1,425 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <div class="p-content">
+
+        <div class="wrapper-main-page">
+    <!--        <div class="container">-->
+    <!--            <div class="row">-->
+                    <div class="slider-container">
+    <!--            <div class="slider-arrow">-->
+    <!--                <img class="slider-arrow__img" src="images/SVG/union.svg">-->
+    <!--                <img class="slider-arrow__img rotate" src="images/SVG/union.svg">-->
+    <!--            </div>-->
+    <!--            <div class="slider-dots">-->
+    <!--                <div class="slider-dots__item active"></div>-->
+    <!--                <div class="slider-dots__item"></div>-->
+    <!--                <div class="slider-dots__item"></div>-->
+    <!--            </div>-->
+                        <div class="slider-item">
+                            <img class="slider-item__img" src="/images/slider-img.png">
+                            <div class="tech">
+                                <div class="tech__new">НОВИНКА</div>
+                                <div class="tech__name">Чайник электрический
+                                    GL-324</div>
+                                <div class="tech__description">Дисковый нагревательный элемент
+                                    Корпус из нержавеющей стали
+                                    Автоотключение при вскипании
+                                    Защита от работы без воды
+                                    Длина кабеля: 70 см
+                                </div>
+                            </div>
+                            <button class="button red">
+                                <span class="button__text">Подробнее</span>
+                            </button>
+                        </div>
+                        <div class="slider-item">
+                            <img class="slider-item__img" src="/images/slider-img.png">
+                            <div class="tech">
+                                <div class="tech__new">НОВИНКА 2!</div>
+                                <div class="tech__name">Чайник электрический
+                                    GL-324</div>
+                                <div class="tech__description">Дисковый нагревательный элемент
+                                    Корпус из нержавеющей стали
+                                    Автоотключение при вскипании
+                                    Защита от работы без воды
+                                    Длина кабеля: 70 см
+                                </div>
+                            </div>
+                            <button class="button red">
+                                <span class="button__text">Подробнее</span>
+                            </button>
+                        </div>
+                        <div class="slider-item">
+                            <img class="slider-item__img" src="/images/slider-img.png">
+                            <div class="tech">
+                                <div class="tech__new">НОВИНКА 3!</div>
+                                <div class="tech__name">Чайник электрический
+                                    GL-324</div>
+                                <div class="tech__description">Дисковый нагревательный элемент
+                                    Корпус из нержавеющей стали
+                                    Автоотключение при вскипании
+                                    Защита от работы без воды
+                                    Длина кабеля: 70 см
+                                </div>
+                            </div>
+                            <button class="button red">
+                                <span class="button__text">Подробнее</span>
+                            </button>
+                        </div>
+                        <div class="slider-item">
+                            <img class="slider-item__img" src="/images/slider-img.png">
+                            <div class="tech">
+                                <div class="tech__new">НОВИНКА 4!</div>
+                                <div class="tech__name">Чайник электрический
+                                    GL-324</div>
+                                <div class="tech__description">Дисковый нагревательный элемент
+                                    Корпус из нержавеющей стали
+                                    Автоотключение при вскипании
+                                    Защита от работы без воды
+                                    Длина кабеля: 70 см
+                                </div>
+                            </div>
+                            <button class="button red">
+                                <span class="button__text">Подробнее</span>
+                            </button>
+                        </div>
+                    </div>
+    <!--            </div>-->
+    <!--        </div>-->
+                <div class="tittle">Категории товаров</div>
+            <div class="category">
+                <a href="{{ path('category', {'slug': 'kitchen'}) }}" class="category__item">
+                    <img class="category__img" src="/images/kitchen.png">
+                    <span class="category__name">Кухня</span>
+                </a>
+                <a href="{{ path('category', {'slug': 'dishes'}) }}" class="category__item">
+                    <img class="category__img" src="/images/posuda.png">
+                    <span class="category__name">Посуда</span>
+                </a>
+                <a href="{{ path('category', {'slug': 'beauty'}) }}" class="category__item">
+                    <img class="category__img" src="/images/prekr.png">
+                    <span class="category__name">Красота и здоровье</span>
+                </a>
+                <a href="{{ path('category', {'slug': 'household'}) }}" class="category__item">
+                    <img class="category__img" src="/images/hoz.png">
+                    <span class="category__name">Хозтовары</span>
+                </a>
+            </div>
+            <div class="tittle about-company-title">О нашей компании</div>
+            <div class="about-company">
+                    <div class="about-company__logo">
+                        <img class="about-company__logo-svg" src="/images/SVG/logo_red_black.svg">
+                        <div class="about-company__logo-name">
+                            Мелкая бытовая техника и посуда
+                        </div>
+                    </div>
+                <div class="text-block">
+                    <div class="about-company__info">
+                        <div class="about-company__info-text"> Торговая марка
+                            Gelberk известна в России и в странах ближнего
+                            зарубежья.
+                        </div>
+                        <div class="about-company__info-text"> Основной задачей
+                            Gelberk является обеспечение российского рынка
+                            качественной бытовой техникой по доступным ценам.
+                        </div>
+                        <div class="about-company__info-text"> Поставщиками
+                            продукции Gelberk являются только
+                            фабрики-производители, поэтому мы можем
+                            гарантировать, что вам, нашим клиентам, товар
+                            достанется по минимальной стоимости.
+                        </div>
+                        <div class="about-company__info-text"> Наш ассортимент
+                            постоянно расширяется в зависимости от потребностями
+                            клиентов.
+                        </div>
+                        <div class="about-company__info-text"> Профессиональная
+                            команда компании обеспечит максимально
+                            взаимовыгодное и надежное сотрудничество.
+                        </div>
+                    </div>
+                    <div class="offer-block">
+                        <div class="offer-block__title">Мы предлагаем:</div>
+                        <div class="offer-block__text">
+                            <span class="offer-block__number"><img src="/images/1-number.png"></span>
+                            выгодные цены, систему дополнительных скидок
+                        </div>
+                        <div class="offer-block__text">
+                             <span class="offer-block__number"><img src="/images/2-number.png"></span>
+                            техническую, информационную и сервисную поддержку
+                        </div>
+                        <div class="offer-block__text">
+                             <span class="offer-block__number"><img src="/images/3-number.png"></span>
+                            наличие товара, минимальные сроки поставок
+                        </div>
+                        <div class="offer-block__text">
+                             <span class="offer-block__number"><img src="/images/4-number.png"></span>
+                            отработанную доставку в любую точку России любых объемов
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="tittle">Бытовая техника Gelberk</div>
+    </div>
+            <div class="technics-background">
+                <div class="technics">
+                    <div class="technics__image">
+                        <img class="technics__img" src="/images/1232.png">
+                    </div>
+                    <div class="technics__info">
+                        <div class="technics__title">Чайник электрический GL-340</div>
+                        <div class="technics__description">
+                            Если вы хотите стать дистрибьютором в сетевом
+                            маркетинге, то чаще всего вам потребуется просто
+                            зарегистрироваться на сайте производителя или же
+                            обратиться с другому распространителю компании.
+                        </div>
+                        <div class="string">
+                            <div class="string__stats">Максимальный объем</div>
+                            <div class="string__border"></div>
+                            <div class="string__sum">1,2 литра</div>
+                        </div>
+                        <div class="string">
+                            <div class="string__stats">Мощность</div>
+                            <div class="string__border"></div>
+                            <div class="string__sum">1500 ВТ</div>
+                        </div>
+                        <div class="string">
+                            <div class="string__stats">Цвет стекла</div>
+                            <div class="string__border"></div>
+                            <div class="string__sum">Фиолетовый</div>
+                        </div>
+                        <div class="string">
+                            <div class="string__stats">Световой индикатор работы</div>
+                            <div class="string__border"></div>
+                            <div class="string__sum">есть</div>
+                        </div>
+                        <div class="string">
+                            <div class="string__stats">Защита от работы без воды</div>
+                            <div class="string__border"></div>
+                            <div class="string__sum">Есть</div>
+                        </div>
+                        <div class="advantage-container">
+                            <div class="advantage__item">
+                                <img class="advantage__img" src="/images/SVG/003-jar.svg">
+                                <div class="advantage__text">Максимальный объем 1,2 л</div>
+                            </div>
+                            <div class="advantage__item">
+                                <img class="advantage__img" src="/images/SVG/001-sugar.svg">
+                                <div class="advantage__text">Мощность 1500 Вт</div>
+                            </div>
+                            <div class="advantage__item">
+                                <img class="advantage__img" src="/images/SVG/002-cookies.svg">
+                                <div class="advantage__text">Дисковый нагревательный элемент</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="technics-background reverse">
+                <div class="technics">
+                    <div class="technics__image">
+                        <img class="technics__img" src="/images/utug2.png">
+                    </div>
+                    <div class="technics__info">
+                        <div class="technics__title">Утюг электрический GL-701</div>
+                        <div class="technics__description">
+                            Если вы хотите стать дистрибьютором в сетевом
+                            маркетинге, то чаще всего вам потребуется просто
+                            зарегистрироваться на сайте производителя или же
+                            обратиться с другому распространителю компании.
+                        </div>
+                        <div class="string">
+                            <div class="string__stats">Максимальный объем</div>
+                            <div class="string__border"></div>
+                            <div class="string__sum">270 милилитров</div>
+                        </div>
+                        <div class="string">
+                            <div class="string__stats">Мощность</div>
+                            <div class="string__border"></div>
+                            <div class="string__sum">2000 ВТ</div>
+                        </div>
+                        <div class="string">
+                            <div class="string__stats">Цвет стекла</div>
+                            <div class="string__border"></div>
+                            <div class="string__sum">Синий кобальт</div>
+                        </div>
+                        <div class="string">
+                            <div class="string__stats">Световой индикатор работы</div>
+                            <div class="string__border"></div>
+                            <div class="string__sum">есть</div>
+                        </div>
+                        <div class="string">
+                            <div class="string__stats">Защитное покрытие</div>
+                            <div class="string__border"></div>
+                            <div class="string__sum">Есть</div>
+                        </div>
+                        <div class="advantage-container">
+                            <div class="advantage__item">
+                                <img class="advantage__img" src="/images/SVG/001-iron-2.svg">
+                                <div class="advantage__text">Утюг электрический 2000 вт</div>
+                            </div>
+                            <div class="advantage__item">
+                                <img class="advantage__img" src="/images/SVG/002-iron-1.svg">
+                                <div class="advantage__text">Объем резервуара 270 мл</div>
+                            </div>
+                            <div class="advantage__item">
+                                <img class="advantage__img" src="/images/SVG/003-iron.svg">
+                                <div class="advantage__text">Подошва из нержавеющей стали</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="technics-background">
+                <div class="technics">
+                    <div class="technics__image">
+                        <img class="technics__img" src="/images/mixer.png">
+                    </div>
+                    <div class="technics__info">
+                        <div class="technics__title">Миксер электрический GL-500</div>
+                        <div class="technics__description">
+                            Если вы хотите стать дистрибьютором в сетевом
+                            маркетинге, то чаще всего вам потребуется просто
+                            зарегистрироваться на сайте производителя или же
+                            обратиться с другому распространителю компании.
+                        </div>
+                        <div class="string">
+                            <div class="string__stats">Количество скоростей</div>
+                            <div class="string__border"></div>
+                            <div class="string__sum">270 милилитров</div>
+                        </div>
+                        <div class="string">
+                            <div class="string__stats">Мощность</div>
+                            <div class="string__border"></div>
+                            <div class="string__sum">200 ВТ</div>
+                        </div>
+                        <div class="string">
+                            <div class="string__stats">Цвет стекла</div>
+                            <div class="string__border"></div>
+                            <div class="string__sum">Сиреневый</div>
+                        </div>
+                        <div class="string">
+                            <div class="string__stats">Световой индикатор работы</div>
+                            <div class="string__border"></div>
+                            <div class="string__sum">нет</div>
+                        </div>
+                        <div class="string">
+                            <div class="string__stats">Нержавеющая сталь</div>
+                            <div class="string__border"></div>
+                            <div class="string__sum">Есть</div>
+                        </div>
+                        <div class="advantage-container">
+                            <div class="advantage__item">
+                                <img class="advantage__img" src="/images/SVG/002-mixer.svg">
+                                <div class="advantage__text">Семь скоростных режимов</div>
+                            </div>
+                            <div class="advantage__item">
+                                <img class="advantage__img" src="/images/SVG/001-electric-mixer.svg">
+                                <div class="advantage__text">Мощность 200 Вт</div>
+                            </div>
+                            <div class="advantage__item none">
+                                <img class="advantage__img none" src="#">
+                                <div class="advantage__text"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="privilege">
+                <div class="privilege__block">
+                    <div class="privilege__title">Преимущества для дистрибьюторов</div>
+                    <img class="privilege__img" src="/images/stash.png">
+                    <div class="privilege__info">
+                        <div class="privilege__text">
+                            Мы проводим мониторинг потребностей
+                            рынка в новых товарах и своевременно организуем их поставку.
+                        </div>
+                        <div class="privilege__text">
+                            В товарах Gelberk используются только
+                            проверенные и надежные технические решения.
+                        </div>
+                        <div class="privilege__text">
+                            Команда профессионалов следит и
+                            постоянно повышает высокий уровень качества товаров, которые мы
+                            предлагаем рынку.
+                        </div>
+                        <div class="privilege__text">
+                            Наши дистрибьюторы получают технику из
+                            первых рук и могут предложить ее потребителю по справедливой и
+                            доступной цене.
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="privilege-bottom">
+                <div class="privilege-bottom__item">
+                    <img class="privilege-bottom__img" src="/images/1.png">
+                    <div class="privilege-bottom__text">Выгодные цены, система
+                        дополнительных скидок
+                    </div>
+                </div>
+                <div class="privilege-bottom__item">
+                    <img class="privilege-bottom__img" src="/images/2.png">
+                    <div class="privilege-bottom__text">
+                        Техническая, информационная
+                        и сервисная поддержка
+                    </div>
+                </div>
+                <div class="privilege-bottom__item">
+                    <img class="privilege-bottom__img" src="/images/3.png">
+                    <div class="privilege-bottom__text">
+                        Наличие товара, минимальные сроки поставки
+                    </div>
+                </div>
+                <div class="privilege-bottom__item">
+                    <img class="privilege-bottom__img" src="/images/4.png">
+                    <div class="privilege-bottom__text">
+                        Отработанная доставка в любую точку России любых объемов товара
+                    </div>
+                </div>
+            </div>
+        <div class="feedback main-page">
+            <div class="feedback__title">Свяжитесь
+                с нами
+            </div>
+            <div class="feedback-error ">
+                {{ form_start(feedbackForm, {'attr': {'method': 'post', 'class': 'feedback__form'}})}}
+                    <div class="popup-autorisation__item">
+                        <div class="popup-autorisation__input-name">Имя</div>
+                        {{ form_widget(feedbackForm.name, {'attr': {'class': 'popup-autorisation__input'}}) }}<br>
+                        <div class="popup-autorisation__error show">
+                            Это поле обязательно нужно заполнить
+                        </div>
+                    </div>
+                    <div class="popup-autorisation__item item-text-area">
+                        <div class="popup-autorisation__input-name textarea">Текст сообщения</div>
+                        {{ form_widget(feedbackForm.message, {'attr': {'class': 'popup-autorisation__textarea', 'rows': '10', 'cols': '45', 'name': 'text'}}) }}
+                        <div class="popup-autorisation__error textarea">
+                            Это поле обязательно нужно заполнить
+                        </div>
+                    </div>
+                    <div class="popup-autorisation__item">
+                        <div class="popup-autorisation__input-name">Телефон</div>
+                        {{ form_widget(feedbackForm.phone, {'attr': {'class': 'popup-autorisation__input', 'placeholder': '+7 (____) ____-___-___'}}) }}<br>
+                        <div class="popup-autorisation__error">
+                            Такой формат номера не верен
+                        </div>
+                    </div>
+                {{ form_end(feedbackForm) }}
+                <div class="flex">
+                    <button class="button red">
+                        Отправить
+                    </button>
+                    <div class="data-processing">
+                        Нажимая кнопку «Отправить», вы
+                        соглашаетесть с <a  class="data-processing__link" href="#">политикой обработки
+                            персональных данных.</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

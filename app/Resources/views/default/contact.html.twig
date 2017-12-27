@@ -1,0 +1,71 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="contacts">
+        <div class="contacts-title">Контакты</div>
+        <div class="wrapper-delivery fluid">
+            <div class="delivery">
+                <div class="delivery__info">
+                    <div class="delivery__name">Москва</div>
+                    <div class="delivery__text">г. Москва ул. Ленская, дом 2/21</div>
+                    <div class="delivery__text">+7(495) 471-06-51</div>
+                    <div class="delivery__text">рrof@рrof-torg.com</div>
+                    <div class="delivery__text">Самовывоз со складов в Москве.</div>
+                </div>
+                <div class="delivery__map"></div>
+            </div>
+            <div class="delivery">
+                <div class="delivery__info">
+                    <div class="delivery__name">Санкт-Петербург</div>
+                    <div class="delivery__text">Санкт-Петербург, Арсенальная улица 78 </div>
+                    <div class="delivery__text"> +7(812) 336-44-53</div>
+                    <div class="delivery__text">рrof@рrof-torg.com</div>
+                    <div class="delivery__text"> Бесплатная доставка по Санкт-Петербургу до транспортной компании в пределах КАД.</div>
+                    <div class="delivery__text">Самовывоз со складов в Санкт-Петербурге..</div>
+                </div>
+                <div class="delivery__map"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="feedback main-page fix-bot">
+        <div class="feedback__title">
+            Свяжитесь с нами
+        </div>
+        <div class="feedback-error">
+            {{ form_start(feedbackForm, {'attr': {'method': 'post', 'class': 'feedback__form'}})}}
+                <div class="popup-autorisation__item">
+                    <div class="popup-autorisation__input-name">Имя</div>
+                    {{ form_widget(feedbackForm.name, {'attr': {'class': 'popup-autorisation__input'}}) }}<br>
+                    <div class="popup-autorisation__error show">
+                        Это поле обязательно нужно заполнить
+                    </div>
+                </div>
+                <div class="popup-autorisation__item item-text-area">
+                    <div class="popup-autorisation__input-name textarea">Текст сообщения</div>
+                    {{ form_widget(feedbackForm.message, {'attr': {'class': 'popup-autorisation__textarea', 'rows': '10', 'cols': '45', 'name': 'text'}}) }}
+                    <div class="popup-autorisation__error textarea">
+                        Это поле обязательно нужно заполнить
+                    </div>
+                </div>
+                <div class="popup-autorisation__item">
+                    <div class="popup-autorisation__input-name">Телефон</div>
+                    {{ form_widget(feedbackForm.phone, {'attr': {'class': 'popup-autorisation__input', 'placeholder': '+7 (____) ____-___-___'}}) }}<br>
+                    <div class="popup-autorisation__error">
+                        Такой формат номера не верен
+                    </div>
+                </div>
+            {{ form_end(feedbackForm) }}
+            <div class="flex">
+                <button class="button red">
+                    Отправить
+                </button>
+                <div class="data-processing">
+                    Нажимая кнопку «Отправить», вы
+                    соглашаетесть с <a  class="data-processing__link" href="#">политикой обработки
+                        персональных данных.</a>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

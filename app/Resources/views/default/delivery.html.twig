@@ -1,0 +1,87 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="delivery-background">
+        <div class="delivery-info">
+            <div class="delivery-info__title">
+                Доставка
+            </div>
+            <div class="delivery-info__block">
+                <div class="delivery-info__text">
+                    <div class="delivery-text-dot">•</div>
+                    бесплатная доставка по
+                    Санкт-Петербургу до транспортной компании
+                </div>
+                <div class="delivery-info__text">
+                    <div class="delivery-text-dot">•</div>
+                     самовывоз со складов в Москве и Санкт-Петербурге
+                </div>
+                <div class="delivery-info__text">
+                    <div class="delivery-text-dot">•</div>
+                     адрес склада в Санкт-Петербурге: Арсенальная улица, дом 78
+                </div>
+                <div class="delivery-info__text">
+                    <div class="delivery-text-dot">•</div>
+                     адрес склада в Москве: Ленская улица, дом 2/21
+                </div>
+               <div class="delivery-info__text">
+                    <div class="delivery-text-dot">•</div>
+                     другие варианты доставки вы можете согласовать с вашим
+                    менеджером
+                </div>
+            </div>
+            <img class="delivery-info__img" src="/images/delivery.png">
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="delivery-docs col-sm-6 col-sm-12">
+                <div class="delivery-docs-title">
+                    Список документов, который
+                    нужен для получения груза:
+                </div>
+                <div class="delivery_docs-text">• документы, удостоверяющие личность</div>
+                <div class="delivery_docs-text">• доверенность на право перевозки грузов компании-покупателя</div>
+                <div class="delivery_docs-text">• транспортную накладную и документы об оплате</div>
+            </div>
+            <div class="delivery-docs col-sm-6 col-sm-12">
+                <div class="delivery-docs-title">
+                    Контактные лица на складах:
+                </div>
+                <div class="delivery_docs-text bold">Санкт-Петербург</div>
+                <div class="delivery_docs-text"> Киреев Виктор Степанович</div>
+                <div class="delivery_docs-text">+7 (999) 234-56-78</div>
+                <div class="delivery_docs-text">stepanich@mail.ru</div>
+
+                <div class="delivery_docs-text bold"> Москва</div>
+                <div class="delivery_docs-text">Гиреев Павел Семенович</div>
+                <div class="delivery_docs-text"> +7 (999) 234-56-78</div>
+                <div class="delivery_docs-text">smenich@mail.ru</div>
+            </div>
+            <div class="card-title col-xs-12 hidden-md hidden-sm hidden-xs">Адреса складов</div>
+            <div class="wrapper-delivery col-xs-12">
+                <div class="delivery">
+                    <div class="delivery__info">
+                        <div class="delivery__name">Москва</div>
+                        <div class="delivery__text">г. Москва ул. Ленская, дом 2/21</div>
+                        <div class="delivery__text">+7(495) 471-06-51</div>
+                        <div class="delivery__text">рrof@рrof-torg.com</div>
+                        <div class="delivery__text">Самовывоз со складов в Москве.</div>
+                    </div>
+                    <div class="delivery__map"></div>
+                </div>
+                <div class="delivery">
+                    <div class="delivery__info">
+                        <div class="delivery__name">Санкт-Петербург</div>
+                        <div class="delivery__text">Санкт-Петербург, Арсенальная улица 78 </div>
+                        <div class="delivery__text"> +7(812) 336-44-53</div>
+                        <div class="delivery__text">рrof@рrof-torg.com</div>
+                        <div class="delivery__text"> Бесплатная доставка по Санкт-Петербургу до транспортной компании в пределах КАД.</div>
+                        <div class="delivery__text">Самовывоз со складов в Санкт-Петербурге..</div>
+                    </div>
+                    <div class="delivery__map"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

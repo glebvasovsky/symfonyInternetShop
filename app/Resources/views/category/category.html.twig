@@ -1,0 +1,307 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+<div class="p-content">
+    {% if categories %}
+        <div class="catalog-main-title">
+            {{ pageTitle }}
+        </div>
+
+        <div class="catalog">
+            <div class="catalog__top">
+                <div class="catalog__title">#</div>
+                <div class="catalog__title">Заказать (шт)</div>
+                <div class="catalog__title">Фото</div>
+                <div class="catalog__title">Артикул</div>
+                <div class="catalog__title">Код</div>
+                <div class="catalog__title">Категория</div>
+                <div class="catalog__title small">
+                    Наличие на складе
+                    <div class="catalog__flex">
+                        <div class="catalog__title_city">СПБ</div>
+                        <div class="catalog__title_city">МСК</div>
+                    </div>
+                </div>
+                <div class="catalog__title">Кол-во в коробке</div>
+                <div class="catalog__title">Объем 1шт(м3)</div>
+                <div class="catalog__title">Объем упак.(м3)</div>
+                <div class="catalog__title">Вес</div>
+                <div class="catalog__title">Цена</div>
+            </div>
+            
+            {% for category in categories %}
+                <div class="catalog__section">
+                    <div class="catalog__name">
+                        {{ category.name }}
+                    </div>
+                </div>
+                    
+                {% if category.products %}
+                    {% for product in category.products %}
+                    <div class="catalog__string">
+                        <div class="catalog__title check">
+                            {% if product.amountInBasket %}
+                                &#10004;
+                            {% endif %}
+                        </div>
+                        <div class="catalog__title">
+                            <div class="switch">
+                                <div class="switch__control">+</div>
+                                <div class="switch__total">{{ product.amountInBasket }}</div>
+                                <div class="switch__control">-</div>
+                            </div>
+                        </div>
+                        <div class="catalog__title img">
+                            <img class="catalog__img" src="{{ product.pathToPhoto }}" alt="Фото">
+                        </div>
+                        <div class="catalog__title">
+                            <div class="catalog__vendor">
+                                <a href="{{ product.url }}">{{ product.fieldValues.vendorCode.value }}</a>
+                            </div>
+                        </div>
+                        <div class="catalog__title">
+                            {{ product.fieldValues.code.value }}
+                        </div>
+                        <div class="catalog__title">{{ product.category.name }}</div>
+
+                        <div class="catalog__title">
+                            <div class="catalog__flex">
+                                {% if product.fieldValues.inStockMSK.value == '' %}
+                                    <img src="/images/no.png">
+                                {% else %}
+                                    <img src="/images/yes.png">
+                                {% endif %}
+                                {% if product.fieldValues.inStockSPB.value == '' %}
+                                    <img src="/images/no.png">
+                                {% else %}
+                                    <img src="/images/yes.png">
+                                {% endif %}
+                            </div>
+                        </div>
+                            {%if product.fieldValues.boxAmount is not defined%}
+                                <div class="catalog__title">-</div>
+                            {% else %}    
+                                {% if product.fieldValues.boxAmount.value|length == null %}
+                                    <div class="catalog__title">-</div>
+                                {% else %}
+                                    <div class="catalog__title">{{ product.fieldValues.boxAmount.value }}</div>
+                                {% endif %}
+                            {% endif %}
+                                
+                            {% if product.fieldValues.instanceSize is not defined %}
+                               <div class="catalog__title">-</div>
+                            {% else %}
+                                {% if product.fieldValues.instanceSize.value|length == null %}
+                                    <div class="catalog__title">-</div>
+                                {% else %}
+                                    <div class="catalog__title">{{ product.fieldValues.instanceSize.value }}</div>
+                                {% endif %}
+                            {% endif %}
+                                
+                            {% if product.fieldValues.boxSize is not defined %}
+                               <div class="catalog__title">-</div>
+                            {% else %}
+                                {% if product.fieldValues.boxSize.value|length == null %}
+                                    <div class="catalog__title">-</div>
+                                {% else %}
+                                    <div class="catalog__title">{{ product.fieldValues.boxSize.value }}</div>
+                                {% endif %}
+                            {% endif %}
+                            
+                            {% if product.fieldValues.weight is not defined %}
+                               <div class="catalog__title">-</div>
+                            {% else %}
+                                {% if product.fieldValues.weight.value|length == null %}
+                                    <div class="catalog__title">-</div>
+                                {% else %}
+                                    <div class="catalog__title">{{ product.fieldValues.weight.value }}</div>
+                                {% endif %}
+                            {% endif %}
+                            
+                            {% if product.price is not defined %}
+                               <div class="catalog__title">-</div>
+                            {% else %}
+                                {% if product.price|length == null %}
+                                    <div class="catalog__title">-</div>
+                                {% else %}
+                                    <div class="catalog__title">{{ product.price }} &#8381;</div>
+                                {% endif %}
+                            {% endif %}
+                        </div>
+                    {% endfor %}
+                {% else %}
+                    Не найдено товаров в категории
+                {% endif %}
+            {% endfor %}
+
+            
+                
+            <div class="catalog__bottom">
+                <div class="result">
+                    <div class="result__text">Всего:</div>
+                    <div class="result__total">{{ basket.totalCount }}</div>
+                    <div class="result__unit">шт</div>
+                </div>
+
+                <div class="expand">
+                    <a class="expand__link" href="#">Развернуть</a>
+                </div>
+
+                <div class="result-sum">
+                    <div class="result-sum__size">{{ basket.totalSize }} м3</div>
+                    <div class="result-sum__heft">{{ basket.totalWeight }} кг</div>
+                    <div class="result-sum__money">{{ basket.totalCoast }}
+                        &#8381;
+                    </div>
+                </div>
+            </div>
+            {% if basket.products %}   
+                
+                <div class="my-catalog">
+                    <div class="turn">
+                        <a class="turn__link" href="#">Свернуть</a>
+                    </div>
+                    <div class="catalog__string">
+                        <div class="catalog__title">#</div>
+                        <div class="catalog__title">Заказать(шт)</div>
+                        <div class="catalog__title ">Фото</div>
+                        <div class="catalog__title">Артикул</div>
+                        <div class="catalog__title">Код</div>
+                        <div class="catalog__title">Категория</div>
+                        <div class="catalog__title">Наличие на складе</div>
+                        <div class="catalog__title">Кол-во в коробке</div>
+                        <div class="catalog__title">Объем 1 шт (м3)</div>
+                        <div class="catalog__title">Объем упак. (м3)</div>
+                        <div class="catalog__title">Вес</div>
+                        <div class="catalog__title">Цена</div>
+                    </div>        
+
+                    {% for product in basket.products %}
+                        <div class="catalog__string">
+                        <div class="catalog__title check">
+                            {% if product.amountInBasket %}
+                                &#10004;
+                            {% endif %}
+                        </div>
+                        <div class="catalog__title">
+                            <div class="switch">
+                                <div class="switch__control">+</div>
+                                <div class="switch__total">{{ product.amountInBasket }}</div>
+                                <div class="switch__control">-</div>
+                            </div>
+                        </div>
+                        <div class="catalog__title img">
+                            <img class="catalog__img" src="{{ product.pathToPhoto }}" alt="Фото">
+                        </div>
+                        <div class="catalog__title">
+                            <div class="catalog__vendor">
+                                <a href="{{ product.url }}">{{ product.fieldValues.vendorCode.value }}</a>
+                            </div>
+                        </div>
+                        <div class="catalog__title">
+                            {{ product.fieldValues.code.value }}
+                        </div>
+                        <div class="catalog__title">{{ product.category.name }}</div>
+
+                        <div class="catalog__title">
+                            <div class="catalog__flex">
+                                {% if product.fieldValues.inStockMSK.value == '' %}
+                                    <img src="/images/no.png">
+                                {% else %}
+                                    <img src="/images/yes.png">
+                                {% endif %}
+                                {% if product.fieldValues.inStockSPB.value == '' %}
+                                    <img src="/images/no.png">
+                                {% else %}
+                                    <img src="/images/yes.png">
+                                {% endif %}
+                            </div>
+                        </div>
+                            {%if product.fieldValues.boxAmount is not defined%}
+                                <div class="catalog__title">-</div>
+                            {% else %}    
+                                {% if product.fieldValues.boxAmount.value|length == null %}
+                                    <div class="catalog__title">-</div>
+                                {% else %}
+                                    <div class="catalog__title">{{ product.fieldValues.boxAmount.value }}</div>
+                                {% endif %}
+                            {% endif %}
+                                
+                            {% if product.fieldValues.instanceSize is not defined %}
+                               <div class="catalog__title">-</div>
+                            {% else %}
+                                {% if product.fieldValues.instanceSize.value|length == null %}
+                                    <div class="catalog__title">-</div>
+                                {% else %}
+                                    <div class="catalog__title">{{ product.fieldValues.instanceSize.value }}</div>
+                                {% endif %}
+                            {% endif %}
+                                
+                            {% if product.fieldValues.boxSize is not defined %}
+                               <div class="catalog__title">-</div>
+                            {% else %}
+                                {% if product.fieldValues.boxSize.value|length == null %}
+                                    <div class="catalog__title">-</div>
+                                {% else %}
+                                    <div class="catalog__title">{{ product.fieldValues.boxSize.value }}</div>
+                                {% endif %}
+                            {% endif %}
+                            
+                            {% if product.fieldValues.weight is not defined %}
+                               <div class="catalog__title">-</div>
+                            {% else %}
+                                {% if product.fieldValues.weight.value|length == null %}
+                                    <div class="catalog__title">-</div>
+                                {% else %}
+                                    <div class="catalog__title">{{ product.fieldValues.weight.value }}</div>
+                                {% endif %}
+                            {% endif %}
+                            
+                            {% if product.price is not defined %}
+                               <div class="catalog__title">-</div>
+                            {% else %}
+                                {% if product.price|length == null %}
+                                    <div class="catalog__title">-</div>
+                                {% else %}
+                                    <div class="catalog__title">{{ product.price }} &#8381;</div>
+                                {% endif %}
+                            {% endif %}
+                        </div>
+                    {% endfor %}
+                    
+                    <div class="catalog__bottom wide">
+                        <div class="total">
+                            <div class="total__name">Всего: &nbsp;</div>
+                            <div class="total__number"> {{ basket.totalCount }} шт</div>
+                        </div>
+                        <div class="total">
+                            <div class="total__name">Объем:&nbsp;</div>
+                            <div class="total__number"> {{ basket.totalSize }} м3</div>
+                        </div>
+                        <div class="total">
+                            <div class="total__name">Общий вес:&nbsp;</div>
+                            <div class="total__number"> {{ basket.totalWeight }} кг</div>
+                        </div>
+                        <div class="total">
+                            <div class="total__name">Сумма:&nbsp;</div>
+                            <div class="total__number"> {{ basket.totalCoast }} &#8381;</div>
+                        </div>
+                        <button class="button red">
+                            <span class="button__icon">
+                                &#10004;
+                            </span>
+                            <span class="button__text">
+                                Оформить заказ
+                            </span>
+                        </button>
+                    </div>
+                </div>
+            {% endif %} 
+        </div>
+    {% else %}
+        Корневых категорий не существует
+    {% endif %}    
+</div>
+  
+{% endblock %}

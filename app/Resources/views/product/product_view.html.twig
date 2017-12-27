@@ -1,0 +1,269 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="p-content">
+        <div class="wrapper-card">
+            {% if mainProduct.id %}
+            <div class="card-title">{{ mainProduct.name }}</div>
+            <div class="flex">
+                <div class="container-item">
+                    <div class="container-item__photo">
+                        <img src="{{ mainProduct.path }}">
+                    </div>
+                    
+                    <div class="related-products">
+                        <div class="related-products__name">Похожие товары</div>
+                        <div class="flex">
+                            {% for similarProduct in similarProducts %}
+                                <div class="container-related">
+                                    <a href="{{ similarProduct.url }}" class="related-products__item">
+                                        <img class="related-products__photo" src="{{ similarProduct.pathToPhoto }}" alt="Фото">
+                                    </a>
+                                    <a href="{{ similarProduct.url }}" class="related-products__name-item">{{ similarProduct.name }}</a>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+
+                <div class="container-right">
+                    <div class="container-description">
+                        <div class="container-description__title">Описание</div>
+                        <div class="container-description__text">{{ mainProduct.description }}</div>
+                        <a class="instructions" href="#">
+                            <img class="instructions__img" src="/images/SVG/list.svg">
+                            Инструкция по эксплуатации
+                        </a>
+                    </div>
+                    <div class="container-right__bottom">
+
+                        <div class="switch">
+                            <div class="switch__text">Количество</div>
+                            <div class="switch__control">+</div>
+                            <div class="switch__total">0000</div>
+                            <div class="switch__control">-</div>
+                        </div>
+
+                        <button class="button red">
+                            <span class="button__text">
+                                Добавить в мои заказы
+                            </span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="line"></div>
+
+            <div class="card-title">Транспортная информация</div>
+
+            <div class="transport-information">
+                <div class="transport-information__block">
+                    <div class="transport-information__string">
+                        <div class="transport-information__name">Код</div>
+                        {% if mainProduct.types.code is not defined %}
+                            <div class="catalog__title">-</div>
+                        {% else %}
+                            {% if mainProduct.types.code.value|length == null %}
+                                <div class="catalog__title">-</div>
+                            {% else %}
+                                <div class="catalog__title">{{ mainProduct.types.code.value }}</div>
+                            {% endif %}
+                        {% endif %}
+                    </div>
+                    <div class="transport-information__string">
+                        <div class="transport-information__name">Артикул</div>
+                        {% if mainProduct.types.vendorCode is not defined %}
+                            <div class="catalog__title">-</div>
+                        {% else %}
+                            {% if mainProduct.types.vendorCode.value|length == null %}
+                                <div class="catalog__title">-</div>
+                            {% else %}
+                                <div class="catalog__title">{{ mainProduct.types.vendorCode.value }}</div>
+                            {% endif %}
+                        {% endif %}
+                    </div>
+                    <div class="transport-information__string">
+                        <div class="transport-information__name">Вес 1 шт.(кг)</div>
+                        {% if mainProduct.types.weight is not defined %}
+                            <div class="catalog__title">-</div>
+                        {% else %}
+                            {% if mainProduct.types.weight.value|length == null %}
+                                <div class="catalog__title">-</div>
+                            {% else %}
+                                <div class="catalog__title">{{ mainProduct.types.weight.value }}</div>
+                            {% endif %}
+                        {% endif %}
+                    </div>
+                    <div class="transport-information__string">
+                        <div class="transport-information__name">Объём 1 шт.(м3)</div>
+                        {% if mainProduct.types.instanceSize is not defined %}
+                            <div class="catalog__title">-</div>
+                        {% else %}
+                            {% if mainProduct.types.instanceSize.value|length == null %}
+                                <div class="catalog__title">-</div>
+                            {% else %}
+                                <div class="catalog__title">{{ mainProduct.types.instanceSize.value }}</div>
+                            {% endif %}
+                        {% endif %}
+                    </div>
+                </div>
+                    
+                <div class="transport-information__block">
+                    <div class="transport-information__string">
+                        <div class="transport-information__title">Наличие товара на складе</div>
+                    </div>
+                    <div class="transport-information__string">
+                        <div class="transport-information__name">{{ mainProduct.types.inStockMSK.label }}</div>
+                        {% if mainProduct.types.inStockMSK is not defined %}
+                            <div class="transport-information__text">Нет информации</div>
+                        {% else %}
+                            {% if mainProduct.types.inStockMSK.value|length == null %}
+                                <div class="transport-information__text">нет</div>
+                            {% else %}
+                                <div class="transport-information__text">есть</div>
+                            {% endif %}
+                        {% endif %}
+                    </div>
+                    <div class="transport-information__string">
+                        <div class="transport-information__name">{{ mainProduct.types.inStockSPB.label }}</div>
+                        {% if mainProduct.types.inStockSPB is not defined %}
+                            <div class="transport-information__text">Нет информации</div>
+                        {% else %}
+                            {% if mainProduct.types.inStockSPB.value|length == null %}
+                                <div class="transport-information__text">нет</div>
+                            {% else %}
+                                <div class="transport-information__text">есть</div>
+                            {% endif %}
+                        {% endif %}
+                    </div>
+                    <div class="transport-information__string">
+                        <div class="transport-information__name">Количество в транс. коробе</div>
+                        {% if mainProduct.types.boxAmount is not defined %}
+                            <div class="catalog__title">-</div>
+                        {% else %}
+                           {% if mainProduct.types.boxAmount.value|length == null %}
+                                <div class="catalog__title">-</div>
+                            {% else %}
+                                <div class="catalog__title">{{ mainProduct.types.boxAmount.value }}</div>
+                            {% endif %}
+                        {% endif %}
+                    </div>
+                </div>
+                    
+                <div class="transport-information__block">
+                    <div class="transport-information__string">
+                        <div class="transport-information__sub-title">Штрихкоды</div>
+                    </div>
+                    <div class="transport-information__string mb-20">
+                        <div class="flex">
+                            <div class="transport-information__container-barcode">
+                                <img class="transport-information__svg" src="/images/SVG/barcode.svg">
+                            </div>
+                            <div class="transport-information__info-barcode">
+                                <div class="transport-information__name">Транспортная упаковка</div>
+                                {% if mainProduct.types.transportPackBarcode is not defined %}
+                                    <div class="catalog__title">-</div>
+                                {% else %}
+                                    {% if mainProduct.types.transportPackBarcode.value|length == null %}
+                                        <div class="catalog__title">-</div>
+                                    {% else %}
+                                        <div class="catalog__title">{{ mainProduct.types.transportPackBarcode.value }}</div>
+                                    {% endif %}
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="transport-information__string barcode">
+                        <div class="flex">
+                            <div class="transport-information__container-barcode">
+                                <img class="transport-information__svg" src="/images/SVG/barcode.svg">
+                            </div>
+                            <div class="transport-information__info-barcode">
+                                <div class="transport-information__name">Потребительская упаковка</div>
+                                {% if mainProduct.types.consumerPackBarcode is not defined %}
+                                    <div class="catalog__title">-</div>
+                                {% else %}
+                                    {% if mainProduct.types.consumerPackBarcode.value|length == null %}
+                                        <div class="catalog__title">-</div>
+                                    {% else %}
+                                        <div class="catalog__title">{{ mainProduct.types.consumerPackBarcode.value }}</div>
+                                    {% endif %}
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                            
+                <div class="transport-information__block">
+                    <div class="transport-information__string">
+                        <div class="transport-information__sub-title">Размеры</div>
+                    </div>
+                    <div class="transport-information__string mb-20">
+                        <div class="flex">
+                            <div class="transport-information__info-barcode">
+                                <div class="transport-information__name">Транспортная упаковка (см)</div>
+                                {% if mainProduct.types.transportPackSize is not defined %}
+                                    <div class="catalog__title">-</div>
+                                {% else %}
+                                    {% if mainProduct.types.transportPackSize.value|length == null %}
+                                        <div class="catalog__title">-</div>
+                                    {% else %}
+                                        <div class="catalog__title">{{ mainProduct.types.transportPackSize.value }}</div>
+                                    {% endif %}
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="transport-information__string">
+                        <div class="flex">
+                            <div class="transport-information__info-barcode">
+                                <div class="transport-information__name">Потребительская упаковка (см)</div>
+                                {% if mainProduct.types.consumerPackSize is not defined %}
+                                    <div class="catalog__title">-</div>
+                                {% else %}
+                                    {% if mainProduct.types.consumerPackSize.value|length == null %}
+                                        <div class="catalog__title">-</div>
+                                    {% else %}
+                                        <div class="catalog__title">{{ mainProduct.types.consumerPackSize.value }}</div>
+                                    {% endif %}
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="line"></div>
+
+            <div class="card-title">Доставка</div>
+            <div class="wrapper-delivery fluid">
+                <div class="delivery">
+                    <div class="delivery__info">
+                        <div class="delivery__name">Москва</div>
+                        <div class="delivery__text">г. Москва ул. Ленская, дом 2/21</div>
+                        <div class="delivery__text">+7(495) 471-06-51</div>
+                        <div class="delivery__text">рrof@рrof-torg.com</div>
+                        <div class="delivery__text">Самовывоз со складов в Москве.</div>
+
+                    </div>
+                    <div class="delivery__map"></div>
+                </div>
+                <div class="delivery">
+                    <div class="delivery__info">
+                        <div class="delivery__name">Москва</div>
+                        <div class="delivery__text">г. Москва ул. Ленская, дом 2/21</div>
+                        <div class="delivery__text">+7(495) 471-06-51</div>
+                        <div class="delivery__text">рrof@рrof-torg.com</div>
+                        <div class="delivery__text">Самовывоз со складов в Москве.</div>
+                    </div>
+                    <div class="delivery__map">
+                    </div>
+                </div>
+            </div>
+            {% else %}
+                Такого товара нет на складе
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}

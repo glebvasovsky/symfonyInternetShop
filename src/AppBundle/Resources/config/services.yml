@@ -1,0 +1,62 @@
+services:
+    mail.transport:
+        class: AppBundle\Service\Transport
+        arguments:
+            # Хост для отправки email
+            $host: '%mailer_host%'
+            # Порт для отправки email
+            $port: '%mailer_port%'
+            # Протокол безопасности
+            $security: '%mailer_security%'
+        calls:
+            # адрес почты, с которой будут отправляться сообщения
+            - method: setUsername
+              arguments:
+                  - '%mailer_user%'
+            # пароль почтового ящика, с которого будут отправляться сообщения
+            - method: setPassword
+              arguments:
+                  - '%mailer_password%'
+
+    # Сервис для отправки email-сообщений
+    mail.sender:
+        class: Swift_Mailer
+        arguments:
+            # в качестве параметра используем сервис mail.transport
+            $transport: '@mail.transport'
+
+    feedback.mail.sender:
+        class: AppBundle\Service\FeedbackMailSender
+        arguments:
+            # качестве параметра используем сервис mail.sender
+            $mailer: '@mail.sender'
+            # адрес почты администратора, на который будут приходить письма обратной связи
+            $adminEmail: '%mailer_admin%'
+            # адрес почты, с которой будут отправляться сообщения
+            $senderEmail: '%mailer_user%'
+            
+    user.orders.count:
+        class: AppBundle\Service\UserOrdersCount
+        arguments:
+            $em: '@doctrine.orm.entity_manager'
+
+    # Сервис сбора данных актуальной корзины пользователя
+    user.basket:
+        class: AppBundle\Service\UserBasket
+        arguments:
+            $em: '@doctrine.orm.entity_manager'
+            $productRenderer: '@product.renderer'
+            
+    # Сервис сбора данных о продукте 
+    product.renderer:
+        class: AppBundle\Service\ProductRenderer
+        arguments:
+            $em: '@doctrine.orm.entity_manager'
+            $router: '@router'
+            $request: '@request_stack'
+            
+    # aliases:
+    AppBundle\Service\FeedbackMailSender: '@feedback.mail.sender'
+    AppBundle\Service\UserOrdersCount: '@user.orders.count'
+    AppBundle\Service\ProductRenderer: '@product.renderer'
+    AppBundle\Service\BasketViewer: '@user.basket'
